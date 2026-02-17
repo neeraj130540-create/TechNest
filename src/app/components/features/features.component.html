@@ -1,0 +1,22 @@
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Why TechNest</span>
+      <h2>Everything You Need to Succeed</h2>
+      <p>We provide all the tools, resources, and support to transform you into a job-ready developer</p>
+    </div>
+
+    <div class="features-grid">
+      @for (feature of features; track feature.title) {
+        <div class="feature-card">
+          <div class="feature-icon-wrap">
+            <i [class]="feature.icon"></i>
+          </div>
+          <div class="feature-highlight">{{ feature.highlight }}</div>
+          <h3>{{ feature.title }}</h3>
+          <p>{{ feature.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

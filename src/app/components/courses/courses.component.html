@@ -1,0 +1,42 @@
+<section class="courses" id="courses">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Our Courses</span>
+      <h2>Learn In-Demand Technologies</h2>
+      <p>Choose from our expert-crafted courses designed to take you from beginner to professional</p>
+    </div>
+
+    <div class="courses-grid">
+      @for (course of courses; track course.title) {
+        <div class="course-card">
+          <div class="card-glow" [style.background]="course.bgColor"></div>
+          <div class="card-header">
+            <div class="course-icon" [style.background]="course.bgColor" [style.color]="course.color">
+              <i [class]="course.icon"></i>
+            </div>
+            <span class="course-level" [style.color]="course.color" [style.borderColor]="course.color">
+              {{ course.level }}
+            </span>
+          </div>
+
+          <h3 [style.color]="course.color">{{ course.title }}</h3>
+          <p class="course-desc">{{ course.description }}</p>
+
+          <div class="course-topics">
+            @for (topic of course.topics; track topic) {
+              <span class="topic-tag">{{ topic }}</span>
+            }
+          </div>
+
+          <div class="card-footer">
+            <div class="course-meta">
+              <span><i class="fas fa-clock"></i> {{ course.duration }}</span>
+              <span><i class="fas fa-book"></i> {{ course.lessons }} Lessons</span>
+            </div>
+            <a href="#contact" class="btn btn-primary btn-sm">Enroll Now</a>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
