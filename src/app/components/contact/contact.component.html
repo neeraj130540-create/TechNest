@@ -88,8 +88,19 @@
               <textarea [(ngModel)]="formData.message" name="message" rows="4" placeholder="Tell us about your goals..."></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-full">
-              <i class="fas fa-paper-plane"></i> Send Inquiry
+            @if (error) {
+              <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                Something went wrong. Please try again.
+              </div>
+            }
+
+            <button type="submit" class="btn btn-primary btn-full" [disabled]="submitting">
+              @if (submitting) {
+                <span class="spinner"></span> Sending...
+              } @else {
+                <i class="fas fa-paper-plane"></i> Send Inquiry
+              }
             </button>
           </form>
         }
