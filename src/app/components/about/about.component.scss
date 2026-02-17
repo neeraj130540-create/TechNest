@@ -159,16 +159,84 @@
 }
 
 @media (max-width: 968px) {
+  .about {
+    padding: 70px 0;
+  }
+
   .about-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
 
   .about-visual {
-    min-height: 350px;
+    min-height: 300px;
+    max-width: 500px;
+    margin: 0 auto;
+
+    .floating-stat {
+      &.stat-1 {
+        right: 0;
+      }
+
+      &.stat-2 {
+        left: 0;
+      }
+    }
   }
 
   .about-content .section-header {
     text-align: center !important;
+  }
+
+  .about-content .btn {
+    display: block;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .about {
+    padding: 50px 0;
+  }
+
+  .about-visual {
+    min-height: 260px;
+
+    .main-card {
+      padding: 28px 20px;
+
+      .card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+      }
+
+      h3 {
+        font-size: 1.3rem;
+      }
+    }
+
+    .floating-stat {
+      padding: 14px 16px;
+
+      .big-number {
+        font-size: 1.4rem;
+      }
+
+      .label {
+        font-size: 0.72rem;
+      }
+    }
+
+    .about-decoration {
+      display: none;
+    }
+  }
+
+  .feature-item {
+    .feature-text {
+      h4 { font-size: 0.95rem; }
+      p { font-size: 0.85rem; }
+    }
   }
 }

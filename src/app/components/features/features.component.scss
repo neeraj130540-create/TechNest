@@ -100,13 +100,26 @@
 }
 
 @media (max-width: 968px) {
+  .features {
+    padding: 70px 0;
+  }
+
   .features-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 600px) {
+  .features {
+    padding: 50px 0;
+  }
+
   .features-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .feature-card {
+    padding: 24px;
   }
 }

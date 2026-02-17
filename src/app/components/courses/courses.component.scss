@@ -128,8 +128,37 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 968px) {
+  .courses {
+    padding: 70px 0;
+  }
+
+  .courses-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .courses {
+    padding: 50px 0;
+  }
+
   .courses-grid {
     grid-template-columns: 1fr;
+  }
+
+  .course-card {
+    padding: 24px;
+
+    .card-footer {
+      flex-direction: column;
+      gap: 16px;
+      align-items: stretch;
+
+      .btn-sm {
+        text-align: center;
+        justify-content: center;
+      }
+    }
   }
 }
