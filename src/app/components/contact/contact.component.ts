@@ -1,9 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
 
-// TODO: Replace with your deployed Google Apps Script Web App URL
+// Replace with your deployed Google Apps Script Web App URL
 const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVT75XmNwXJR2xkIJQAi9G-aY37pszEsT6PDvpt2CTyt15gVyuFI4gDSIYXSOcUR2l/exec';
 
 @Component({
@@ -14,8 +13,6 @@ const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxVT75XmNwXJR
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  private http = inject(HttpClient);
-
   formData = {
     name: '',
     email: '',
@@ -30,21 +27,25 @@ export class ContactComponent {
 
   courses = ['Angular', 'HTML5', 'CSS3', 'React', 'Java'];
 
-  onSubmit() {
+  async onSubmit() {
     this.submitting = true;
     this.error = false;
 
-    this.http.post(GOOGLE_SCRIPT_URL, this.formData).subscribe({
-      next: () => {
-        this.submitting = false;
-        this.submitted = true;
-        this.formData = { name: '', email: '', phone: '', course: '', message: '' };
-        setTimeout(() => this.submitted = false, 5000);
-      },
-      error: () => {
-        this.submitting = false;
-        this.error = true;
-      }
-    });
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(this.formData)
+      });
+
+      this.submitting = false;
+      this.submitted = true;
+      this.formData = { name: '', email: '', phone: '', course: '', message: '' };
+      setTimeout(() => this.submitted = false, 5000);
+    } catch {
+      this.submitting = false;
+      this.error = true;
+    }
   }
 }
